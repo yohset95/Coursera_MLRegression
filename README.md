@@ -1,6 +1,6 @@
 # Flight Ticket Price Prediction using Linear Regression
 This is a final project of Coursera's IBM Machine Learning: Regression. </br>
-Arranged by Yohanes Setiawan.
+Written by Yohanes Setiawan.
 
 # **Business Understanding**
 
@@ -41,6 +41,7 @@ To give feedbacks to passengers in India for their best trip planning and predic
 # **Data Understanding**
 
 - Data source was secondary data and was collected from Ease my trip website
+- Source: https://www.kaggle.com/shubhambathwal/flight-price-prediction
 - A total of 300261 distinct flight booking options was extracted from the site
 - Data was collected for 50 days, from February 11th to March 31st, 2022
 
@@ -151,3 +152,74 @@ For categorical columns/features: </br>
 * Box Cox Transformation for Target Variable
 
 # **Modelling**
+* I used 3 linear regression models: Multiple Linear Regression, Polynomial Regression, and Lasso Regression
+* The model will be evaluated by 3-Fold Validation to check whether the model is overfitting or underfitting.
+
+## Multiple Linear Regression
+* Generalization of simple linear regression for more than one predictor variable. </br>
+* Two multiple linear regression are compared: With and Without Box Cox Transformation
+* With Box Cox Transformation: </br>
+![](https://drive.google.com/uc?export=view&id=1crar0irO-_2ThLJAPq1WDKrxSluoGVF2) </br>
+* Therefore, the model from Multiple Linear Regression with Box Cox Transformation is not overfitting or underfitting.
+* Without Box Cox Transformation: </br>
+![](https://drive.google.com/uc?export=view&id=1l-AQxmRPAZ7Z7YkcEJOjtkKVzN6nuQDO) </br>
+* Therefore, the model from Multiple Linear Regression without Box Cox Transformation is not overfitting or underfitting.
+* Because the error from Multiple Linear Regression without Box Cox Transformation is lower than with Box Cox Transformation, Multiple Linear Regression will be chosen to compare with other linear regression models.
+
+## Polynomial Regression
+* Linear Regression with Polynomial Features
+* I choose the maximum degree of polynomial = 2 because the dataset have too many features such that the polynomial transformation of the features will not affect too many addition to the features of the dataset. </br>
+![](https://drive.google.com/uc?export=view&id=1EH2hpMNK48O9XrPdM0X5jZnSwUdJsqBi) </br>
+* Therefore, the model from Polynomial Regression is not overfitting or underfitting
+* Because the model with polynomial features are better than without polynomial feature, then the writer will add polynomial features in Lasso Regression.
+
+## Lasso Regression
+* Linear regression which performs shrinkage regularization with automatically selecting features
+* Lasso has one important hyperparameter, that is `alpha`. To find the best `alpha`, I used hyperparameter tuning (`GridSearchCV`) for training the model. </br>
+![](https://drive.google.com/uc?export=view&id=1Aqy5vQIms9uRR_FR4z662d4WrGEj_p_J) </br>
+* It can be seen that degree of polynomial features = 2 has the higher R squared Score
+* The best hyperparameter: `polynomial_features___degree=2` and `alpha=0.20158909717702692`
+* Model with the chosen `alpha` will be evaluated by 3-Fold Validation as previous models:
+![](https://drive.google.com/uc?export=view&id=1IN5l3Bu66zLvn2NMF0YFHdJd-LxMEBFM) </br>
+* Therefore, the model from Lasso Regression is not overfitting or underfitting
+
+# Model Evaluation
+* I plot the scatter plot for every model and evaluate every model using R Squared (R2) Score.
+* In addition, Root Mean Square Error (RMSE) is used to measure error between predicted and actual values.
+
+## Multiple Linear Regression
+![](https://drive.google.com/uc?export=view&id=1k3EfBkyqmWfHzO9FUz1bddAWoIBj6GWz) </br>
+As we have seen that Multiple Linear Regression has failed to capture flight ticket price in range [0,50000] which classifies as the lower price
+
+## Polynomial Regression
+![](https://drive.google.com/uc?export=view&id=1lbp9UpesLi8mC6G6Euoqg_i0xTh59xRl) </br>
+The model from Polynomial Regression is good enough to predict ticket prices.
+
+## Lasso Regression
+![](https://drive.google.com/uc?export=view&id=16n38c1fCsd-dO-pRBJ1eqYo44kjWb4Hb) </br>
+Lasso regression model tends to similar with Polynomial Regression. It can captures model very well. However, in order to compare between Polynomial and Lasso, I need to check the evaluation between models.
+
+## Model Selection
+Type | RMSE | R2 Score |
+--- | --- | --- | 
+Multiple Linear Regression | 6774.180186 | 0.911250
+Polynomial Regression | 5011.836200	| 0.951421
+Lasso Regression | 5010.349536 | 0.951450
+
+* In summary, Lasso Regression has been chosen to be the best linear regression 
+model to predict flight ticket price because it has the lowest RMSE and highest R2 Score.
+* For future predicitons, Lasso will be saved in a pickle form which is ready to be deployed.
+
+# Get Insights from the Selected Model
+* Length of features (with Polynomial Features, not Lasso) is 741 features.
+* Length of features after Feature Selection in Lasso is 197.
+* I have many redundant features through polynomial features which is automatically removed by Lasso for better prediction results.
+* I also plot Top 10 Feature Importances for Flight Ticket Price Prediction: </br>
+![](https://drive.google.com/uc?export=view&id=1eyT8VhyViYrd-Meq183bojp_E5ubrIp5) </br>
+* Business Class has been the most important feature in Lasso's prediction because it is a special class which exists only in Air India and Vistara. The chosen class determines the ticket prices in prediction.
+* Duration is important to determine the ticket price. Therefore, customer should consider the overall amount of time it takes to travel between cities before ordering flight tickets.
+
+
+For coding implementation, the `.ipynb` file is available to read and download in this repository. </br>
+Thank you for reading! </br>
+Have a nice day.

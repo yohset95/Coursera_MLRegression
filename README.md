@@ -45,4 +45,5 @@ To give feedbacks to passengers in India for their best trip planning and predic
 - Data was collected for 50 days, from February 11th to March 31st, 2022
 
 ## Dataset Information
-![Dataset Info](https://drive.google.com/file/d/1LC33M9acmR9y14oTHOnwFNVVoPMMIZ9k/view?usp=sharing)
+![Pic1](https://drive.google.com/uc?export=view&id=1LC33M9acmR9y14oTHOnwFNVVoPMMIZ9k) </br>
+This means there is no missing value in the dataset.

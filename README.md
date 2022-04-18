@@ -1,4 +1,6 @@
-# IBM Machine Learning: Regression Final Project
+# Flight Ticket Price Prediction using Linear Regression
+This is a final project of Coursera's IBM Machine Learning: Regression. </br>
+Arranged by Yohanes Setiawan.
 
 # **Business Understanding**
 

@@ -75,7 +75,7 @@ For categorical columns/features: </br>
 - Skewed: "duration", "price"
 
 ## Box Plot
-![](https://drive.google.com/uc?export=view&id=13EENW6HLJhmITmSmZHUdTrCVWo5ZwpyL) </br>
+![](https://drive.google.com/uc?export=view&id=1Hltq3DlHLRw7LIgLLXCEeuw6C2PLE40S) </br>
 - The only independent features/columns with outlier is "duration".
 - "price" is the dependent feature with outlier. However, this can be ignored because "price" is our target variable.
 - Passengers with duration between cities for more than 30 hours are considered as outliers

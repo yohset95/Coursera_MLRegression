@@ -1,12 +1,12 @@
-# Flight Ticket Price Prediction using Linear Regression
-This is a final project of Coursera's IBM Machine Learning: Regression. </br>
+# Flight Ticket Price Prediction using Linear Regression Models
+This is my final project of Coursera's IBM Machine Learning: Regression. </br>
 Written by Yohanes Setiawan.
 
 # **Business Understanding**
 
 ## Introduction
-- 'Easemytrip' is an internet platform for booking flight tickets, and hence a platform that potential passengers use to buy tickets. 
-- A thorough study of the data will aid in the discovery of valuable insights that will be of enormous value to passengers.
+- 'Easemytrip' is an internet platform for booking flight tickets, and hence a platform that potential passengers use to buy tickets 
+- A thorough study of the data will aid in the discovery of valuable insights that will be of enormous value to passengers
 
 ## Problem Statement
 
@@ -47,7 +47,7 @@ To give feedbacks to passengers in India for their best trip planning and predic
 
 ## Dataset Information
 ![](https://drive.google.com/uc?export=view&id=1LC33M9acmR9y14oTHOnwFNVVoPMMIZ9k) </br>
-This means there is no missing value in the dataset.
+This means there is no missing value in the dataset
 
 ## Checking Duplicated Data
 ![](https://drive.google.com/uc?export=view&id=17ZLr2t0N35BnxLfbIm0W0EqA34GmznOI) </br>
@@ -66,7 +66,7 @@ For categorical columns/features: </br>
 - The passengers are likely to choose one stop for time efficiency
 - Morning departure time has been the best time for passengers
 - The passengers like to arrive at night
-- There are 1561 unique values in column "flight". Therefore, it should be removed to avoid redudancy feature
+- There are 1561 unique values in column "flight". Therefore, it should be removed to avoid redundancy feature
 
 
 ## Univariate Distribution of Observations
@@ -76,8 +76,8 @@ For categorical columns/features: </br>
 
 ## Box Plot
 ![](https://drive.google.com/uc?export=view&id=1Hltq3DlHLRw7LIgLLXCEeuw6C2PLE40S) </br>
-- The only independent features/columns with outlier is "duration".
-- "price" is the dependent feature with outlier. However, this can be ignored because "price" is our target variable.
+- The only independent features/columns with outlier is "duration"
+- "price" is the dependent feature with outlier. However, this can be ignored because "price" is our target variable
 - Passengers with duration between cities for more than 30 hours are considered as outliers
 
 ## Categorical Plot
@@ -85,9 +85,9 @@ For categorical columns/features: </br>
 
 ## Correlation
 ![](https://drive.google.com/uc?export=view&id=1Y59UitQVnl0QjcKzOoPh1iCbjVFBlbGe) </br>
-* Column "Price" is highly correlated with "Unnamed: 0". This means the higher values in "Unnamed: 0", also the higher values in "Price" as the target variable. 
-* However, the "Unnamed: 0" is the ID of the customer, which is sorted from the lowest bought ticket price until the highest bought ticket price.
-* Therefore, column "Unnamed: 0" will affect the predicted model seriously and need to be removed.
+* Column "Price" is highly correlated with "Unnamed: 0". This means the higher values in "Unnamed: 0", also the higher values in "Price" as the target variable
+* However, the "Unnamed: 0" is the ID of the customer, which is sorted from the lowest bought ticket price until the highest bought ticket price
+* Therefore, column "Unnamed: 0" will affect the predicted model seriously and need to be removed
 
 ## D'Agustino K^2 Normality Test For Target Variable
 - alpha = 0.05 (5%)
@@ -97,10 +97,10 @@ For categorical columns/features: </br>
 
 ![](https://drive.google.com/uc?export=view&id=1fwDfLLnJPJt7G4t9wuWSp9xGTAHNkU7X) </br>
 
-* Because the p-value equals to 0, which rejects the null hypothesis (p-value=0<0.05=alpha), our target variable (Price) is not normally distributed.
-* Finally, the target variable will be transfromed using Box Cox Transformation.
-* However, the result from non Box Cox Transformation is still conducted in order to compare between the Box Cox Transformation.
-* The model with the best result will be chosen for the next stage of further regression models.
+* Because the p-value equals to 0, which rejects the null hypothesis (p-value=0<0.05=alpha), our target variable (Price) is not normally distributed
+* Finally, the target variable will be transfromed using Box Cox Transformation
+* However, the result from non Box Cox Transformation is still conducted in order to compare between the Box Cox Transformation
+* The model with the best result will be chosen for the next stage of further regression models
 
 ## Get Insights
 ### How is the price affected when tickets are bought in just 1 or 2 days before departure?
@@ -119,8 +119,8 @@ For categorical columns/features: </br>
 
 ![](https://drive.google.com/uc?export=view&id=1ARHwNU4X1FJJ0fFPOOF0IuEaZQH_aNnH) </br>
 
-* The ticket prices vary with airlines. 
-* Air India and Vistara are the most varying airline because of its highest CV.
+* The ticket prices vary with airlines 
+* Air India and Vistara are the most varying airline because of its highest Coefficient of Variation (CV)
 
 ### How does the ticket price vary between Economy and Business class?
 
@@ -132,18 +132,9 @@ For categorical columns/features: </br>
 
 ![](https://drive.google.com/uc?export=view&id=1M86YcZiELlm-xD783jzqXMbfAa89yNqk) </br>
 
-# Summary of Findings based on EDA and Get Insights
-
-* If passengers want cheaper tickets, they should buy around 25-30 days before departure. Buying tickets 1-2 days before departure is only for emergency
-* The best departure for cheaper tickets occures when passengers choose Late Night or Early Morning as departure and arrival time
-* Bangalore, Chennai, and Kolkata are the top 3 highest ticket price
-* Delhi and Hyderabad are considered as top 2 lowest ticket price
-* If passengers want to try business class in cheaper mode, then they should choose Air India. But, if passengers choose the most likable business class with best facilities (and higher ticket price absolutely), they may choose Vistara.
-* If passengers want cheaper ticket, they should choose flight higher duration between cities. The more less duration between cities, the higher ticket price should be.
-
 # **Feature Engineering**
 * Handling Outlier using Interquartile Range Analysis: `duration`
-* Removing Unimportant Feature(s): `Unnamed: 0` and `flight`
+* Removing Irrelevant Feature(s): `Unnamed: 0` and `flight`
 * Categorical Encoding using One Hot Encoding for categorical columns
 
 # **Data Preparation**
@@ -153,25 +144,25 @@ For categorical columns/features: </br>
 
 # **Modelling**
 * I used 3 linear regression models: Multiple Linear Regression, Polynomial Regression, and Lasso Regression
-* The model will be evaluated by 3-Fold Validation to check whether the model is overfitting or underfitting.
+* The model will be evaluated by 3-Fold Validation to check whether the model is overfitting or underfitting
 
 ## Multiple Linear Regression
 * Generalization of simple linear regression for more than one predictor variable. </br>
 * Two multiple linear regression are compared: With and Without Box Cox Transformation
 * With Box Cox Transformation: </br>
 ![](https://drive.google.com/uc?export=view&id=1crar0irO-_2ThLJAPq1WDKrxSluoGVF2) </br>
-* Therefore, the model from Multiple Linear Regression with Box Cox Transformation is not overfitting or underfitting.
+* Therefore, the model from Multiple Linear Regression with Box Cox Transformation is not overfitting or underfitting
 * Without Box Cox Transformation: </br>
 ![](https://drive.google.com/uc?export=view&id=1l-AQxmRPAZ7Z7YkcEJOjtkKVzN6nuQDO) </br>
-* Therefore, the model from Multiple Linear Regression without Box Cox Transformation is not overfitting or underfitting.
-* Because the error from Multiple Linear Regression without Box Cox Transformation is lower than with Box Cox Transformation, Multiple Linear Regression will be chosen to compare with other linear regression models.
+* Therefore, the model from Multiple Linear Regression without Box Cox Transformation is not overfitting or underfitting
+* Because the error from Multiple Linear Regression without Box Cox Transformation is lower than with Box Cox Transformation, Multiple Linear Regression without Box Cox Transformation will be chosen to compare with other linear regression models
 
 ## Polynomial Regression
 * Linear Regression with Polynomial Features
 * I choose the maximum degree of polynomial = 2 because the dataset have too many features such that the polynomial transformation of the features will not affect too many addition to the features of the dataset. </br>
 ![](https://drive.google.com/uc?export=view&id=1EH2hpMNK48O9XrPdM0X5jZnSwUdJsqBi) </br>
 * Therefore, the model from Polynomial Regression is not overfitting or underfitting
-* Because the model with polynomial features are better than without polynomial feature, then the writer will add polynomial features in Lasso Regression.
+* Because the model with polynomial features are better than without polynomial feature, then the writer will add polynomial features in Lasso Regression
 
 ## Lasso Regression
 * Linear regression which performs shrinkage regularization with automatically selecting features
@@ -184,16 +175,16 @@ For categorical columns/features: </br>
 * Therefore, the model from Lasso Regression is not overfitting or underfitting
 
 # Model Evaluation
-* I plot the scatter plot for every model and evaluate every model using R Squared (R2) Score.
-* In addition, Root Mean Square Error (RMSE) is used to measure error between predicted and actual values.
+* I plot the scatter plot for every model and evaluate every model using R Squared (R2) Score
+* In addition, Root Mean Square Error (RMSE) is used to measure error between predicted and actual values
 
 ## Multiple Linear Regression
 ![](https://drive.google.com/uc?export=view&id=1k3EfBkyqmWfHzO9FUz1bddAWoIBj6GWz) </br>
-As we have seen that Multiple Linear Regression has failed to capture flight ticket price in range [0,50000] which classifies as the lower price
+As we have seen that Multiple Linear Regression has failed to capture flight ticket price in range [0,50000) which is lower price
 
 ## Polynomial Regression
 ![](https://drive.google.com/uc?export=view&id=1lbp9UpesLi8mC6G6Euoqg_i0xTh59xRl) </br>
-The model from Polynomial Regression is good enough to predict ticket prices.
+The model from Polynomial Regression is good enough to predict ticket prices
 
 ## Lasso Regression
 ![](https://drive.google.com/uc?export=view&id=16n38c1fCsd-dO-pRBJ1eqYo44kjWb4Hb) </br>
@@ -207,17 +198,30 @@ Polynomial Regression | 5011.836200	| 0.951421
 Lasso Regression | 5010.349536 | 0.951450
 
 * In summary, Lasso Regression has been chosen to be the best linear regression 
-model to predict flight ticket price because it has the lowest RMSE and highest R2 Score.
-* For future predicitons, Lasso will be saved in a pickle form which is ready to be deployed.
+model to predict flight ticket price because it has the lowest RMSE and highest R2 Score
+* For future predicitons, Lasso will be saved in a pickle form which is ready to be deployed
 
 # Get Insights from the Selected Model
-* Length of features (with Polynomial Features, not Lasso) is 741 features.
-* Length of features after Feature Selection in Lasso is 197.
-* I have many redundant features through polynomial features which is automatically removed by Lasso for better prediction results.
-* I also plot Top 10 Feature Importances for Flight Ticket Price Prediction: </br>
+* Length of features (with Polynomial Features, not Lasso) is 741 features
+* Length of features after Feature Selection in Lasso is 197 features
+* I have many redundant features through polynomial features which is automatically removed by Lasso for better prediction results
+* I also plot our Top 10 Feature Importances for Flight Ticket Price Prediction: </br>
 ![](https://drive.google.com/uc?export=view&id=1eyT8VhyViYrd-Meq183bojp_E5ubrIp5) </br>
-* Business Class has been the most important feature in Lasso's prediction because it is a special class which exists only in Air India and Vistara. The chosen class determines the ticket prices in prediction.
-* Duration is important to determine the ticket price. Therefore, customer should consider the overall amount of time it takes to travel between cities before ordering flight tickets.
+* Business Class has been the most important feature in Lasso's prediction because it is a special class which exists only in Air India and Vistara. The chosen class determines the ticket prices in prediction
+* Duration is important to determine the ticket price. Therefore, customer should consider the overall amount of time it takes to travel between cities before ordering flight tickets
+
+# Summary of Findings and Suggestions
+
+* If passengers want cheaper tickets, they should buy around 25-30 days before departure. Buying tickets 1-2 days before departure is only for emergency
+* The best departure for cheaper tickets occures when passengers choose Late Night or Early Morning as departure and arrival time
+* Bangalore, Chennai, and Kolkata are the top 3 highest ticket price
+* Delhi and Hyderabad are considered as top 2 lowest ticket price
+* If passengers want to try business class in a cheaper mode, then they should choose Air India. But, if passengers choose the most likable business class with best facilities (and higher ticket price absolutely), they may choose Vistara
+* If passengers want cheaper ticket, they should choose flight higher duration between cities. The more less duration between cities, the higher ticket price should be
+* The standard linear regression model is severely under performing on low and high valued tickets, while the polynomial and ridge models are smoothly fit across the entire range of ticket prices.
+* Lasso regression with alpha between 0 and 1 has been the best alpha for modelling by searching from hyperparameter tuning (GridSearch)
+* Lasso regression tends to remove more features in using the polynomial features
+* Showing the list of features the model believes are the most important in predicting the ticket price to give insights
 
 
 For coding implementation, the `.ipynb` file is available to read and download in this repository. </br>

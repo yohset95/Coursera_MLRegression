@@ -37,4 +37,12 @@ To give feedbacks to passengers in India for their best trip planning and predic
 - Graph analysis
 - Table analysis
 - Predictive analysis (Regression Problem)
-  
+
+# **Data Understanding**
+
+- Data source was secondary data and was collected from Ease my trip website
+- A total of 300261 distinct flight booking options was extracted from the site
+- Data was collected for 50 days, from February 11th to March 31st, 2022
+
+## Dataset Information
+![Dataset Info](https://drive.google.com/file/d/1LC33M9acmR9y14oTHOnwFNVVoPMMIZ9k/view?usp=sharing)

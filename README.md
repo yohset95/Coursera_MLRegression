@@ -45,5 +45,109 @@ To give feedbacks to passengers in India for their best trip planning and predic
 - Data was collected for 50 days, from February 11th to March 31st, 2022
 
 ## Dataset Information
-![Pic1](https://drive.google.com/uc?export=view&id=1LC33M9acmR9y14oTHOnwFNVVoPMMIZ9k) </br>
+![](https://drive.google.com/uc?export=view&id=1LC33M9acmR9y14oTHOnwFNVVoPMMIZ9k) </br>
 This means there is no missing value in the dataset.
+
+## Checking Duplicated Data
+![](https://drive.google.com/uc?export=view&id=17ZLr2t0N35BnxLfbIm0W0EqA34GmznOI) </br>
+There is no duplicated data in the dataset.
+
+# Exploratory Data Analysis (EDA)
+
+## Descriptive Statistics
+For numerical columns/features: </br>
+![](https://drive.google.com/uc?export=view&id=17HNCtDKWpbBnBODAezFelaADbwXzZDxK) </br> </br>
+For categorical columns/features: </br>
+![](https://drive.google.com/uc?export=view&id=17HNCtDKWpbBnBODAezFelaADbwXzZDxK) </br>
+- The most favorite airline is Vistara
+- The passengers mostly depart from Delhi 
+- The most likable destination city is Mumbai
+- The passengers are likely to choose one stop for time efficiency
+- Morning departure time has been the best time for passengers
+- The passengers like to arrive at night
+- There are 1561 unique values in column "flight". Therefore, it should be removed to avoid redudancy feature
+
+
+## Univariate Distribution of Observations
+![](https://drive.google.com/uc?export=view&id=13EENW6HLJhmITmSmZHUdTrCVWo5ZwpyL) </br>
+- Uniform distribution: "Unnamed: 0" and "days_left"
+- Skewed: "duration", "price"
+
+## Box Plot
+![](https://drive.google.com/uc?export=view&id=13EENW6HLJhmITmSmZHUdTrCVWo5ZwpyL) </br>
+- The only independent features/columns with outlier is "duration".
+- "price" is the dependent feature with outlier. However, this can be ignored because "price" is our target variable.
+- Passengers with duration between cities for more than 30 hours are considered as outliers
+
+## Categorical Plot
+![](https://drive.google.com/uc?export=view&id=1A2rT5CCtxEc0HPg5THnSzACnVrnFrY74) </br>
+
+## Correlation
+![](https://drive.google.com/uc?export=view&id=1Y59UitQVnl0QjcKzOoPh1iCbjVFBlbGe) </br>
+* Column "Price" is highly correlated with "Unnamed: 0". This means the higher values in "Unnamed: 0", also the higher values in "Price" as the target variable. 
+* However, the "Unnamed: 0" is the ID of the customer, which is sorted from the lowest bought ticket price until the highest bought ticket price.
+* Therefore, column "Unnamed: 0" will affect the predicted model seriously and need to be removed.
+
+## D'Agustino K^2 Normality Test For Target Variable
+- alpha = 0.05 (5%)
+- H0 (Null Hypothesis): Column "Price" is normally distributed
+- H1 (Alternative Hypothesis): Column "Price" is not normally distributed
+- The null hypothesis will be rejected if p-value < alpha 
+
+![](https://drive.google.com/uc?export=view&id=1fwDfLLnJPJt7G4t9wuWSp9xGTAHNkU7X) </br>
+
+* Because the p-value equals to 0, which rejects the null hypothesis (p-value=0<0.05=alpha), our target variable (Price) is not normally distributed.
+* Finally, the target variable will be transfromed using Box Cox Transformation.
+* However, the result from non Box Cox Transformation is still conducted in order to compare between the Box Cox Transformation.
+* The model with the best result will be chosen for the next stage of further regression models.
+
+## Get Insights
+### How is the price affected when tickets are bought in just 1 or 2 days before departure?
+
+![](https://drive.google.com/uc?export=view&id=1MoHZmtp4JBMwkqTO45cXjv-dRu1z4blF) </br>
+
+### Does ticket price change based on the departure time and arrival time?
+
+![](https://drive.google.com/uc?export=view&id=1FNMyVdIm7CBRspygu-bqjfvOuWspVxIq) </br>
+
+### How the price changes with change in Source and Destination?
+
+![](https://drive.google.com/uc?export=view&id=1BgzOjnJ9xzz1PfRf1NUnKu14gdamscHz) </br>
+
+### Does price vary with Airlines?
+
+![](https://drive.google.com/uc?export=view&id=1ARHwNU4X1FJJ0fFPOOF0IuEaZQH_aNnH) </br>
+
+* The ticket prices vary with airlines. 
+* Air India and Vistara are the most varying airline because of its highest CV.
+
+### How does the ticket price vary between Economy and Business class?
+
+![](https://drive.google.com/uc?export=view&id=1hT3jYbjg96UKj0GFLJp9YGE6J71WCALA) </br>
+
+![](https://drive.google.com/uc?export=view&id=17-uoxfYVdrT-DmS3THB_LsWpFLIJVEjU) </br>
+
+### Does ticket price change based on the number of stops between the source and destination cities?
+
+![](https://drive.google.com/uc?export=view&id=1M86YcZiELlm-xD783jzqXMbfAa89yNqk) </br>
+
+# Summary of Findings based on EDA and Get Insights
+
+* If passengers want cheaper tickets, they should buy around 25-30 days before departure. Buying tickets 1-2 days before departure is only for emergency
+* The best departure for cheaper tickets occures when passengers choose Late Night or Early Morning as departure and arrival time
+* Bangalore, Chennai, and Kolkata are the top 3 highest ticket price
+* Delhi and Hyderabad are considered as top 2 lowest ticket price
+* If passengers want to try business class in cheaper mode, then they should choose Air India. But, if passengers choose the most likable business class with best facilities (and higher ticket price absolutely), they may choose Vistara.
+* If passengers want cheaper ticket, they should choose flight higher duration between cities. The more less duration between cities, the higher ticket price should be.
+
+# **Feature Engineering**
+* Handling Outlier using Interquartile Range Analysis: `duration`
+* Removing Unimportant Feature(s): `Unnamed: 0` and `flight`
+* Categorical Encoding using One Hot Encoding for categorical columns
+
+# **Data Preparation**
+* Training-Testing Split: 70% training data and 30% testing data
+* Feature Scaling with StandardScaler()
+* Box Cox Transformation for Target Variable
+
+# **Modelling**

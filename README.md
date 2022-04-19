@@ -225,5 +225,6 @@ model to predict flight ticket price because it has the lowest RMSE and highest 
 
 
 For coding implementation, the `.ipynb` file is available to read and download in this repository. </br>
+For further details of presentation, the `.pdf` file is given with method explanations and dataset insights (without coding) </br>
 Thank you for reading! </br>
 Have a nice day.

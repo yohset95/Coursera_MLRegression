@@ -1,6 +1,9 @@
 # Flight Ticket Price Prediction using Linear Regression Models
-This is my final project of Coursera's IBM Machine Learning: Regression. </br>
+This is my final project of Coursera's IBM Machine Learning: Regression.
+
 Written by Yohanes Setiawan.
+
+Note:  If the notebook (`.ipynb`) is failed to render through Github, then click [here](https://nbviewer.org/github/yohset95/TicketPrice_Prediction/blob/main/flight_price_regression.ipynb)</br>
 
 # **Business Understanding**
 
